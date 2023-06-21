@@ -24,9 +24,7 @@ impl<'a> Guess {
         };
         match value {
             1..=100 => Ok(Guess { value }),
-            _ => {
-                Err("Number must be between 1 and 100")
-            }
+            _ => Err("Number must be between 1 and 100")
         }
     }
 
