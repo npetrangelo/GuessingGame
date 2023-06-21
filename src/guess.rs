@@ -1,5 +1,4 @@
 use std::cmp::Ordering;
-use std::fmt::{Display, Formatter};
 use std::num::ParseIntError;
 
 pub struct Guess {
@@ -9,6 +8,7 @@ pub struct Guess {
 fn input() -> Result<u32, ParseIntError> {
     let mut guess = String::new();
     std::io::stdin().read_line(&mut guess).expect("Failed to read line");
+    println!("You guessed {guess}");
     return guess.trim().parse::<u32>();
 }
 
@@ -44,11 +44,5 @@ impl<'a> Guess {
                 false
             }
         }
-    }
-}
-
-impl Display for Guess {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.value)
     }
 }

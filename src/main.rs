@@ -14,7 +14,6 @@ fn main() {
                 continue
             },
         };
-        println!("You guessed {guess}");
         if guess.matches(&secret) {
             break;
         }
