@@ -20,9 +20,7 @@ impl<'a> Guess {
         println!("Guess a number:");
         let value = match input() {
             Ok(x) => x,
-            Err(E) => {
-                return Err(E)
-            },
+            Err(E) => return Err(E)
         };
         match value {
             1..=100 => Ok(Guess { value }),
