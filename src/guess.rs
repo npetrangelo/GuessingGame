@@ -1,3 +1,4 @@
+use std::cmp::Ordering;
 use std::fmt::{Display, Formatter};
 use std::num::ParseIntError;
 
@@ -28,8 +29,21 @@ impl<'a> Guess {
         }
     }
 
-    pub fn value(&self) -> u32 {
-        self.value
+    pub fn matches(&self, other: &u32) -> bool {
+        match self.value.cmp(other) {
+            Ordering::Less => {
+                println!("Too small!");
+                false
+            }
+            Ordering::Equal => {
+                println!("You win!");
+                true
+            },
+            Ordering::Greater => {
+                println!("Too big!");
+                false
+            }
+        }
     }
 }
 
