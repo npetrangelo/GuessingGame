@@ -5,11 +5,14 @@ pub struct Guess {
     value: u32
 }
 
-fn input() -> Result<u32, ParseIntError> {
+fn input<'a>() -> Result<u32, &'a str> {
     let mut guess = String::new();
     std::io::stdin().read_line(&mut guess).expect("Failed to read line");
     println!("You guessed {guess}");
-    return guess.trim().parse::<u32>();
+    return match guess.trim().parse::<u32>() {
+        Ok(g) => Ok(g),
+        Err(_) => Err("That is not a number!")
+    };
 }
 
 impl<'a> Guess {
@@ -17,8 +20,8 @@ impl<'a> Guess {
         println!("Guess a number:");
         let value = match input() {
             Ok(x) => x,
-            Err(_) => {
-                return Err("That is not a number!")
+            Err(E) => {
+                return Err(E)
             },
         };
         match value {
