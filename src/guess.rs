@@ -1,5 +1,4 @@
 use std::cmp::Ordering;
-use std::num::ParseIntError;
 
 pub struct Guess {
     value: u32
